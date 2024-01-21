@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import getAllNotes,default_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('allNotes/', getAllNotes, name='all_notes'),
+    path('', default_view, name='default_view'),
 ]
