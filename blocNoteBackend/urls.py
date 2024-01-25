@@ -16,11 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import getAllNotes,default_view
+from .views import getAllNotes,default_view,add_note,get_csrf_token,delete_note,modify_note
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('admin/', admin.site.urls),
     path('allNotes/', getAllNotes, name='all_notes'),
+    path('add-note/',add_note,name="add-note"),
+    path('get-csrf-token/', get_csrf_token, name="get_csrf_token"),
+    path('deleteNote/<int:id>/', delete_note, name="delete_note"),
+    path('modifyNote/<int:id>/',modify_note,name="modify_note"),
     path('', default_view, name='default_view'),
 ]
