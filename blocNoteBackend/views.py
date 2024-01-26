@@ -33,8 +33,12 @@ def modify_note(request, id):
             content = data.get('content', '')  # Use .get() to avoid KeyError
             
             # Update the note with the new title and content
-            note.title = title
-            note.content = content
+            if 'title' in data:
+                note.title = data['title']
+            
+            # Update the note with the new content if provided
+            if 'content' in data:
+                note.content = data['content']
             note.save()
             
             return JsonResponse({'message': 'Note modified successfully'})
